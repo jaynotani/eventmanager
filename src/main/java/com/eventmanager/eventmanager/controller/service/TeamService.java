@@ -1,5 +1,6 @@
 package com.eventmanager.eventmanager.controller.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,4 +22,13 @@ public class TeamService {
 	public Team addTeam(Team team) {
 		return teamRepository.save(team);
 	}
+	
+	public List<Team> getAllTeams(){
+		return teamRepository.findAll();
+	}
+	
+	public void deleteTeamById(UUID id) {
+		teamRepository.deleteById(id);
+	}
+
 }

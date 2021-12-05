@@ -5,11 +5,12 @@ import java.util.UUID;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import com.datastax.oss.driver.api.core.uuid.Uuids;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter
 @Table
 public class Team {
 	private String name;
@@ -19,6 +20,9 @@ public class Team {
 	private String contact;
 	private boolean isAvailable;
 
+	public Team() {
+		id=Uuids.timeBased();
+	}
 	public Team(String name, UUID id, String contact, boolean isAvailable) {
 		super();
 		this.name = name;
@@ -29,7 +33,7 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return "Team [name=" + name + ", id=" + id + ", contact=" + contact + ", isAvailale=" + isAvailable + "]";
+		return "Team [name=" + name + ", id=" + id + ", contact=" + contact + ", isAvailable=" + isAvailable + "]";
 	}
 	
 }

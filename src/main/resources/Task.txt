@@ -1,0 +1,13 @@
+Running Cassandra
+	docker run -d --name cassandra-node -p 9042:9042 cassandra
+
+CREATE KEYSPACE IF NOT EXISTS eventmanager WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : '1' };
+	
+use eventmanager;
+ 
+CREATE TABLE Team(
+   id timeuuid PRIMARY KEY,
+   name text,
+   contact text,
+   isAvailable boolean
+);
